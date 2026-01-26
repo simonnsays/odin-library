@@ -5,10 +5,11 @@ const submitBtn = document.querySelector('#submit')
 const shelf = document.querySelector('.shelf')
 const myLibrary = []
 
-function Book(title, author, hasRead) {
+function Book(title, author, hasRead, src) {
     this.id = crypto.randomUUID()
     this.title = title
     this.author = author
+    this.src = src
     this.hasRead = hasRead
     this.changeReadStatus = function () {
         this.hasRead = !this.hasRead
@@ -24,7 +25,7 @@ function createBookCard(book) {
     const imageHolder = document.createElement('div')
     imageHolder.className = 'image-holder'
     const img = document.createElement('img')
-    img.src = book.src
+    img.src = book.src ? book.src : 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Book_red%3B_question_marks.svg/250px-Book_red%3B_question_marks.svg.png?20220730225458'
     imageHolder.appendChild(img)
     card.appendChild(imageHolder)
 
@@ -54,23 +55,30 @@ function createBookCard(book) {
     shelf.appendChild(card)
 }
 
-function addBookToLibrary(title, author, hasRead) {
-    const newBook = new Book(title, author, hasRead)
+function addBookToLibrary(title, author, hasRead, src) {
+    const newBook = new Book(title, author, hasRead, src)
     createBookCard(newBook)
 
     myLibrary.push(newBook)
 }
 
-function changeReadStatus() {
-    
+
+function updateLibrary() {
+    shelf.innerHTML = ''
+
+    myLibrary.forEach(book => {
+        createBookCard(book)
+    })
 }
+addBookToLibrary('Enchiridion', 'Ancient Lorekeepers', false, 'https://i.pinimg.com/1200x/3b/d0/61/3bd0619c1baac118e90d19ad54f3422f.jpg')
+addBookToLibrary('Mind Games', 'Jay T. Doggzone', false, 'https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/b/b8/Mind_Games.png/revision/latest?cb=20121030160005')
+addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf', false, )
+addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf', false, )
+addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
 
-addBookToLibrary('Enchiridion', 'Ancient Lorekeepers')
-addBookToLibrary('Mind Games', 'Jay T. Doggzone')
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
 
+updateLibrary()
+console.log(myLibrary)
 
 addBtn.addEventListener('click', () => {
     console.log(modal)
