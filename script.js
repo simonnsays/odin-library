@@ -18,7 +18,15 @@ function Book(title, author, hasRead) {
 
 function createBookCard(book) {
     const card = document.createElement('div')
+    card.className = 'card'
     card.id = book.id
+
+    const imageHolder = document.createElement('div')
+    imageHolder.className = 'image-holder'
+    const img = document.createElement('img')
+    img.src = book.src
+    imageHolder.appendChild(img)
+    card.appendChild(imageHolder)
 
     const titleEl = document.createElement('h4')
     titleEl.innerText = book.title
@@ -27,6 +35,21 @@ function createBookCard(book) {
     const authorEl = document.createElement('h6')
     authorEl.innerText = book.author
     card.appendChild(authorEl)
+
+    const buttonHolder = document.createElement('div')
+    buttonHolder.className = 'action-holder'
+        const readBtn = document.createElement('button')
+        readBtn.type = 'button'
+        readBtn.className = 'status'
+        readBtn.textContent = 'Read'
+        buttonHolder.appendChild(readBtn)
+
+        const deleteBtn = document.createElement('button')
+        deleteBtn.type = 'button'
+        deleteBtn.className = 'delete'
+        deleteBtn.textContent = 'Delete'
+        buttonHolder.appendChild(deleteBtn)
+    card.appendChild(buttonHolder)
 
     shelf.appendChild(card)
 }
@@ -38,8 +61,14 @@ function addBookToLibrary(title, author, hasRead) {
     myLibrary.push(newBook)
 }
 
+function changeReadStatus() {
+    
+}
+
 addBookToLibrary('Enchiridion', 'Ancient Lorekeepers')
 addBookToLibrary('Mind Games', 'Jay T. Doggzone')
+addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
+addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
 addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
 
 
@@ -55,11 +84,13 @@ closeBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const title = document.querySelector('#title').value
-    const author = document.querySelector('#author').value
-    const hasRead = document.querySelector('#hasRead').checked
+    let title = document.querySelector('#title').value
+    let author = document.querySelector('#author').value
+    let hasRead = document.querySelector('#hasRead').checked
 
     addBookToLibrary(title, author, hasRead)
+
+    document.querySelector('form').reset()
     modal.close()
 })
 

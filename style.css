@@ -1,0 +1,123 @@
+:root {
+    --white: #e1d7d5;
+    --beige: #a59b9a;
+    --wood: #866965;
+    --brown: #513937;
+    --black: #161010;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: var(--wood);
+    /* width: 100vw; */
+    overflow: auto;
+    height: 100vh;
+    color: var(--black);
+    display: grid;
+    align-content: start;
+    gap: 10px;
+}
+
+.header {
+    height: 70px;
+    background-color: var(--brown);
+    box-sizing: border-box;
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding:  15px 50px;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    justify-self: start;
+}
+
+.header button {
+    justify-self: end;
+    /* margin-right: 20px; */
+    border: 1px solid var(--white);
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: var(--white);
+
+}
+
+.shelf {
+    margin: 0 50px;
+    padding: 20px 0;
+    border-radius: 25px;
+    background-color: var(--wood);
+    /* height: 100%; */
+    /* overflow: hidden; */
+    display: grid;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+}
+
+.card {
+    height: 350px;
+    width: 250px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 3px var(--brown);
+    display: grid;
+    /* grid-template-rows: 1fr 2fr 1fr 1fr; */
+}
+
+.image-holder {
+    place-self: center;
+    height: 200px;
+}
+.image-holder img{
+    /* width: 100%; */
+    height: 100%;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
+}
+
+.card h4,
+.card h6 {
+    /* background-color: white; */
+    margin: 0;
+    padding: 0;
+    align-self: center;
+}
+
+.card h4 {
+    border-top: 1px solid rgba(0, 0, 0, .2);
+    padding-top: 7px;
+}
+
+.card h6 {
+    opacity: .7;
+}
+
+.action-holder {
+    place-self: end;
+    display: flex;
+    gap: 10px;
+}
+
+.action-holder button {
+    border: none;
+    /* background-color: var(--white); */
+    background-color: rgba(0, 0, 0, .2);
+    opacity: .7;
+    font-size: .6rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    outline: none;
+    border-radius: 5px;
+    height: 20px;
+    width: 50px;
+}
+
