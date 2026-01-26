@@ -115,6 +115,11 @@ body {
     width: 50px;
 }
 
+.action-holder button.read {
+    background-color: rgba(0, 0, 0, .8);
+
+}
+
 #modal::backdrop {
     background-color: rgba(0, 0, 0, .6);
 }
@@ -125,11 +130,9 @@ body {
     color: var(--white);
     border: 1px solid var(--beige);
     border-radius: 5px;
-    /* box-shadow: 1px 1px 5px var(--white); */
 }
 
 form {
-    /* height: 300px; */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -145,7 +148,7 @@ form input {
 
 [type="checkbox"] {
     background-color: green;
-      accent-color: var(--white); /* Changes the check mark and accent color to red */
+      accent-color: var(--white);
 
 }
 

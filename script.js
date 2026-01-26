@@ -11,11 +11,11 @@ function Book(title, author, hasRead, src) {
     this.author = author
     this.src = src
     this.hasRead = hasRead
-    this.changeReadStatus = function () {
-        this.hasRead = !this.hasRead
-    }
-    
 }
+Book.prototype.changeReadStatus = function() {
+    this.hasRead = !this.hasRead
+}
+
 
 function createBookCard(book) {
     const card = document.createElement('div')
@@ -41,14 +41,21 @@ function createBookCard(book) {
     buttonHolder.className = 'action-holder'
         const readBtn = document.createElement('button')
         readBtn.type = 'button'
-        readBtn.className = 'status'
+        readBtn.className = book.hasRead ? 'read' : 'unread'
         readBtn.textContent = 'Read'
+        readBtn.addEventListener('click', () => {
+            book.changeReadStatus()
+            updateLibrary()
+        })
         buttonHolder.appendChild(readBtn)
 
         const deleteBtn = document.createElement('button')
         deleteBtn.type = 'button'
         deleteBtn.className = 'delete'
         deleteBtn.textContent = 'Delete'
+        deleteBtn.addEventListener('click', () => {
+            deleteBook(book)
+        })
         buttonHolder.appendChild(deleteBtn)
     card.appendChild(buttonHolder)
 
@@ -57,11 +64,15 @@ function createBookCard(book) {
 
 function addBookToLibrary(title, author, hasRead, src) {
     const newBook = new Book(title, author, hasRead, src)
-    // createBookCard(newBook)
 
     myLibrary.push(newBook)
 }
 
+function deleteBook(book) {
+    myLibrary.splice(myLibrary.findIndex(ref => ref.id === book.id), 1)
+
+    updateLibrary()
+}
 
 function updateLibrary() {
     shelf.innerHTML = ''
@@ -72,16 +83,13 @@ function updateLibrary() {
 }
 addBookToLibrary('Enchiridion', 'Ancient Lorekeepers', false, 'https://i.pinimg.com/1200x/3b/d0/61/3bd0619c1baac118e90d19ad54f3422f.jpg')
 addBookToLibrary('Mind Games', 'Jay T. Doggzone', false, 'https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/b/b8/Mind_Games.png/revision/latest?cb=20121030160005')
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf', false, )
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf', false, )
-addBookToLibrary('What To Do When Your Best Friend Leaves', 'Bob Leaf')
-
+addBookToLibrary('I wrote a Book', 'L . S . P', false, )
+addBookToLibrary('Mystic Rituals And Their Space Time Applications', 'Simon Petrikov; Betty Grof', false, )
+addBookToLibrary('Fiona And Cake', 'Ice King')
 
 updateLibrary()
-console.log(myLibrary)
 
 addBtn.addEventListener('click', () => {
-    console.log(modal)
     modal.showModal()
 })
 
