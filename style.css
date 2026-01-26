@@ -115,3 +115,56 @@ body {
     width: 50px;
 }
 
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+#modal {
+
+    background-color: var(--brown);
+    color: var(--white);
+    border: 1px solid var(--beige);
+    border-radius: 5px;
+    /* box-shadow: 1px 1px 5px var(--white); */
+}
+
+form {
+    /* height: 300px; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0;
+}
+
+form input {
+    background-color: var(--white);
+    border: none;
+    color: var(--black);
+    padding: 7px;
+}
+
+[type="checkbox"] {
+    background-color: green;
+      accent-color: var(--white); /* Changes the check mark and accent color to red */
+
+}
+
+form > :nth-child(1),
+form > :nth-child(2),
+form > :nth-child(3) {
+    display: flex;
+    flex-direction: column;
+}
+
+form > :nth-child(5) {
+    place-self: end;
+}
+form button {
+    justify-self: end;
+    align-self: flex-end;
+    border: 1px solid var(--white);
+    height: 25px;
+    width: 70px;
+    border-radius: 5px;
+    background-color: var(--white);
+}

@@ -57,7 +57,7 @@ function createBookCard(book) {
 
 function addBookToLibrary(title, author, hasRead, src) {
     const newBook = new Book(title, author, hasRead, src)
-    createBookCard(newBook)
+    // createBookCard(newBook)
 
     myLibrary.push(newBook)
 }
@@ -97,6 +97,7 @@ submitBtn.addEventListener('click', (e) => {
     let hasRead = document.querySelector('#hasRead').checked
 
     addBookToLibrary(title, author, hasRead)
+    updateLibrary()
 
     document.querySelector('form').reset()
     modal.close()
