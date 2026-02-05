@@ -11,6 +11,10 @@ body {
     padding: 0;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     background-color: var(--wood);
     overflow: auto;
