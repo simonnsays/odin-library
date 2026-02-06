@@ -24,7 +24,7 @@ class Library {
         this.items.push(newBook)
     }
 
-    deleteBook() {
+    deleteBook(book) {
         this.items.splice(this.items.findIndex(ref => ref.id === book.id), 1)
 
         this.updateUI()
@@ -66,7 +66,7 @@ class Library {
             readBtn.textContent = 'Read'
             readBtn.addEventListener('click', () => {
                 book.changeReadStatus()
-                updateLibrary()
+                this.updateUI()
             })
             buttonHolder.appendChild(readBtn)
 
@@ -75,7 +75,7 @@ class Library {
             deleteBtn.className = 'delete'
             deleteBtn.textContent = 'Delete'
             deleteBtn.addEventListener('click', () => {
-                deleteBook(book)
+                this.deleteBook(book)
             })
             buttonHolder.appendChild(deleteBtn)
         card.appendChild(buttonHolder)
